@@ -61,7 +61,7 @@ if ! kubectl version > /dev/null 2>&1; then
   seq 1 "${E2E_KIND_CLUSTER_NUM}" | time parallel -- env KUBECONFIG="${KIND_CONFIG_PREFIX}-{}" kind -v 1 create cluster --name "${KIND_CLUSTER_PREFIX}-{}" --wait 5m --image kindest/node:${KUBE_VERSION}
 
   echo '>>> Loading images into the Kind cluster(s)'
-  seq 1 "${E2E_KIND_CLUSTER_NUM}" | time parallel -- kind --name "${KIND_CLUSTER_PREFIX}-{}" load docker-image 'docker.io/fluxcd/flux:latest'
+  seq 1 "${E2E_KIND_CLUSTER_NUM}" | time parallel -- kind --name "${KIND_CLUSTER_PREFIX}-{}" load docker-image 'quay.io/fossa/flux:latest'
   if [ "${E2E_KIND_CLUSTER_NUM}" -gt 1 ]; then
     BATS_EXTRA_ARGS="--jobs ${E2E_KIND_CLUSTER_NUM}"
   fi

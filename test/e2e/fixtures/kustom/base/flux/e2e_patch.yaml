@@ -1,6 +1,6 @@
 - op: replace
   path: /spec/template/spec/containers/0/image
-  value: docker.io/fluxcd/flux:latest # test the flux version being developed on and not the latest
+  value: quay.io/fossa/flux:latest # test the flux version being developed on and not the latest
                                       # release
 - op: add
   path: /spec/template/spec/containers/0/args/-
