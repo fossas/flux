@@ -57,5 +57,5 @@ jobs:
           bin/upload-binaries
 
           # Publish images on Quay
-          docker push "quay.io/fossa/flux:${CIRCLE_TAG}"
-          docker push "quay.io/fossa/fluxctl:${CIRCLE_TAG}"
+          docker push "quay.io/fossa/flux:${GITHUB_TAG}"
+          docker push "quay.io/fossa/fluxctl:${GITHUB_TAG}"
