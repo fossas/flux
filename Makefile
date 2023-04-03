@@ -83,7 +83,7 @@ lint-e2e: test/bin/shfmt test/bin/shellcheck
 build/.%.done: docker/Dockerfile.%
 	mkdir -p ./build/docker/$*
 	cp $^ ./build/docker/$*/
-	$(SUDO) docker build -t docker.io/fluxcd/$* -t docker.io/fluxcd/$*:$(IMAGE_TAG) \
+	$(SUDO) docker build -t quay.io/fossa/$* -t quay.io/fossa/$*:$(IMAGE_TAG) \
 		--build-arg VCS_REF="$(VCS_REF)" \
 		--build-arg BUILD_DATE="$(BUILD_DATE)" \
 		-f build/docker/$*/Dockerfile.$* ./build/docker/$*
@@ -151,7 +151,7 @@ cache/%/sops-$(SOPS_VERSION): docker/sops.version
 
 test/e2e/bats: cache/bats-core-$(BATS_COMMIT).tar.gz
 	mkdir -p $@
-	tar -C $@ --strip-components 1 -xzf $< 
+	tar -C $@ --strip-components 1 -xzf $<
 
 cache/bats-core-$(BATS_COMMIT).tar.gz:
 	# Use 2opremio's fork until https://github.com/bats-core/bats-core/pull/255 is merged
@@ -185,7 +185,7 @@ build-fluxctl: release-bins
 	mkdir -p ./build/docker/fluxctl
 	cp ./build/fluxctl_linux_amd64 ./build/docker/fluxctl/fluxctl
 	cp ./docker/Dockerfile.fluxctl ./build/docker/fluxctl/Dockerfile
-	$(SUDO) docker build -t docker.io/fluxcd/fluxctl:$(IMAGE_TAG) \
+	$(SUDO) docker build -t quay.io/fossa/fluxctl:$(IMAGE_TAG) \
 		--build-arg VCS_REF="$(VCS_REF)" \
 		--build-arg BUILD_DATE="$(BUILD_DATE)" \
 		-f ./build/docker/fluxctl/Dockerfile ./build/docker/fluxctl
