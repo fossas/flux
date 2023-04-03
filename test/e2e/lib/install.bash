@@ -29,7 +29,7 @@ function install_flux_with_helm() {
 
   helm install --name flux --wait \
     --namespace "${FLUX_NAMESPACE}" \
-    --set image.repository=docker.io/fluxcd/flux \
+    --set image.repository=quay.io/fossa/flux \
     --set image.tag=latest \
     --set git.url=ssh://git@gitsrv/git-server/repos/cluster.git \
     --set git.secretName=flux-git-deploy \

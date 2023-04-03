@@ -1,3 +1,11 @@
+# fossas/flux
+
+This is a fork of [Flux v1](https://github.com/fluxcd/flux) that has been updated to include GitHub's new [SSH host key](https://github.blog/2023-03-23-we-updated-our-rsa-ssh-host-key/).
+
+Original README is preserved below.
+
+---
+
 # Flux v1
 
 This repository contains the source code of Flux Legacy (v1).
