@@ -32,7 +32,7 @@ jobs:
       - name: Prepare cache
         run: |
           cp "$(go env GOPATH)/bin/fluxctl" cache/fluxctl
-          docker save -o cache/flux-latest.tar fluxcd/flux:latest
+          docker save -o cache/flux-latest.tar quay.io/fossa/flux:latest
       - name: Upload cache
         uses: actions/upload-artifact@v1
         with:
@@ -70,7 +70,7 @@ jobs:
           chmod +x cache/fluxctl
           sudo mv cache/fluxctl /usr/local/bin/fluxctl
           docker load --input cache/flux-latest.tar -q
-          kind load docker-image fluxcd/flux:latest
+          kind load docker-image quay.io/fossa/flux:latest
       - name: Run tests
         run: |
           E2E_TESTS='${{ matrix.test }}' make e2e-gh
